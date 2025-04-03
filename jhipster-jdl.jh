@@ -1,0 +1,237 @@
+entity Gestante {
+
+    // Gestante
+    dataDeCadastro ZonedDateTime
+    nomeCompleto String required minlength(3) maxlength(80)
+    cpf String required minlength(11) maxlength(11)
+    rg String required minlength(3) maxlength(15)
+	dataDeNascimento ZonedDateTime required
+
+    //InformacoesDeContato
+    email String required minlength(5) maxlength(40) pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)
+    celular String required minlength(11) maxlength(11)
+    telefoneFixo String minlength(10) maxlength(10)
+//    whatsapp String minlength(11) maxlength(11)
+//    instagram String minlength(3) maxlength(15)
+    
+    //Endereco
+	logradouro String maxlength(25)
+	numero String minlength(1) maxlength(10)
+	complemento String minlength(3) maxlength(25)
+	bairro String minlength(3) maxlength(50)
+	cep String required minlength(8) maxlength(8)
+	cidade String required minlength(3) maxlength(50)
+	
+	//Formacao
+}
+
+entity AvaliacaoDaGestacao {
+    dataDaAvaliacao ZonedDateTime
+}
+
+entity Gestacao {
+	dataUltimaMenstruacao ZonedDateTime
+	dataDePartoProvavel ZonedDateTime
+	dataDePartoUltrassom ZonedDateTime	
+	observacao String
+}
+
+entity Bebe {
+	nome String
+	idadeGestacionalEmSemanas Float
+	pesoEmGramas Float
+	alturaEmCentimetros Float
+    intervaloClampeamentoEmMinutos Float
+	apgar String
+	capurroEmSemanas Integer
+	observacao String
+}
+
+entity Hospital {
+	nome String
+	descricao String
+	
+    //Endereco
+	logradouro String required maxlength(25)
+	numero String required minlength(1) maxlength(10)
+	complemento String required minlength(3) maxlength(25)
+	bairro String required minlength(3) maxlength(50)
+	cep String required minlength(8) maxlength(8)
+	cidade String required minlength(3) maxlength(50)
+}
+
+entity RegistroDeParto {
+    dataDoParto ZonedDateTime
+    duracaoEmHoras Float
+	observacao String
+}
+
+entity Doula {
+	nome String
+	descricao String
+}
+
+entity Medico {
+	nome String
+	descricao String
+}
+
+// Cadastros de Configuracao
+
+entity AntecedenteDeSaude {
+	nome String
+	descricao String
+//    ativo Boolean
+}
+
+entity IntercorrenciaDaGestacao {
+	nome String
+	descricao String
+//    ativo Boolean
+}
+
+entity IntercorrenciaDoParto {
+	nome String
+	descricao String
+//    ativo Boolean
+}
+
+entity PlanoDeSaude {
+	nome String
+    codigo String
+	descricao String
+//    ativo Boolean
+}
+
+entity Profissao {
+	nome String
+	descricao String
+//    ativo Boolean
+}
+
+entity EspecialidadeMedica {
+	nome String
+	descricao String
+//    ativo Boolean
+}
+
+entity Ocupacao {
+	nome String
+	descricao String
+}
+
+entity AspectoDoRecemNascido {
+	nome String
+	descricao String
+//    ativo Boolean
+}
+
+entity IndicacaoDeCesarea {
+	nome String
+	descricao String
+//    ativo Boolean
+}
+
+entity GrauDeParentesco {
+	nome String
+	descricao String
+}
+
+entity ViaDeParto {
+	nome String
+	descricao String
+}
+
+entity NivelDeEscolaridade {
+	nome String
+	descricao String
+}
+
+entity Sexo {
+	nome String
+	descricao String
+}
+
+entity EstadoCivil {
+	nome String
+	descricao String
+}
+
+entity UnidadeFederativa {
+	nome String
+	descricao String
+}
+
+entity LocalDeNascimento {
+	nome String
+	descricao String
+}
+
+entity PosicaoDeParto {
+	nome String
+	descricao String
+}
+
+entity TipoSanguineo {
+	nome String
+	descricao String
+}
+
+relationship ManyToOne {
+	Gestante{Profissao(nome) required} to Profissao
+    Gestante{Ocupacao(nome) required} to Ocupacao
+    Gestante{NivelDeEscolaridade(nome)} to NivelDeEscolaridade
+	Gestante{PlanoDeSaude(nome)} to PlanoDeSaude
+    Gestante{TipoSanguineo(nome)} to TipoSanguineo
+    Gestante{EstadoCivil(nome)} to EstadoCivil
+    Gestante{UnidadeFederativa(nome)} to UnidadeFederativa
+    
+    Bebe{TipoSanguineo(nome)} to TipoSanguineo
+    Bebe{Sexo(nome)} to Sexo
+    
+    AntecedenteDeSaude{GrauDeParentesco(nome) required} to GrauDeParentesco
+
+    Medico{EspecialidadeMedica(nome) required} to EspecialidadeMedica
+ 
+    Hospital{UnidadeFederativa(nome)} to UnidadeFederativa
+ 
+    RegistroDeParto{PosicaoDeParto(nome)} to PosicaoDeParto
+    RegistroDeParto{LocalDeNascimento(nome)} to LocalDeNascimento
+}
+
+// Relacionamentos
+
+relationship OneToOne {
+    RegistroDeParto{ViaDePartoDesejada(nome)} to ViaDeParto{ViaDePartoDesejada}
+    RegistroDeParto{ViaDePartoRealizada(nome)} to ViaDeParto{ViaDePartoRealizada}
+
+    AvaliacaoDaGestacao{Gestacao} to Gestacao
+    Bebe{Gestante(nomeCompleto) required} to Gestante
+    Bebe{Gestacao(id) required} to Gestacao
+    Gestacao{Gestante(nomeCompleto) required} to Gestante
+    
+//    RegistroDeParto{Gestacao(id) required} to Gestacao
+    RegistroDeParto{Bebe(nome) required} to Bebe
+//    RegistroDeParto{Gestante(nomeCompleto) required} to Gestante
+    RegistroDeParto{Doula(nome)} to Doula
+//    RegistroDeParto{Medico(nome)} to Obstetra
+//    RegistroDeParto{Medico(nome)} to Pediatra
+    
+    RegistroDeParto{Obstetra(nome)} to Medico{Obstetra}
+    RegistroDeParto{Pediatra(nome)} to Medico{Pediatra}
+    RegistroDeParto{Hospital(nome)} to Hospital
+}
+
+relationship ManyToMany {
+
+    AvaliacaoDaGestacao{AntecedenteDeSaude(nome)} to AntecedenteDeSaude{AvaliacaoDaGestacao(id)}
+
+    Bebe{AspectoDoRecemNascido(nome)} to AspectoDoRecemNascido{Bebe(id)}
+
+    Gestacao{Bebe(nome)} to Bebe{Gestacao(id)}
+
+    RegistroDeParto{IntercorrenciaDoParto(nome)} to IntercorrenciaDoParto{RegistroDeParto(id)}
+    RegistroDeParto{IndicacaoDeCesarea(nome)} to IndicacaoDeCesarea{RegistroDeParto(id)}
+}
+
+paginate Gestante, AvaliacaoDaGestacao with pagination

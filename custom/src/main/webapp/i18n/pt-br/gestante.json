@@ -1,0 +1,45 @@
+{
+  "gestarmeApp": {
+    "gestante": {
+      "home": {
+        "title": "Gestantes",
+        "createLabel": "Cadastrar Gestante",
+        "editLabel": "Editar Cadastro de Gestante",
+        "createOrEditLabel": "Editar  Gestante",
+        "notFound": "Nenhum Gestante encontrado"
+      },
+      "created": "Um novo cadastro de Gestante foi criado com o identificador {{ param }}",
+      "updated": "Um cadastro de Gestante foi atualizado com o identificador {{ param }}",
+      "deleted": "Um cadastro de Gestante foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir o cadastro de Gestante {{ id }}?"
+      },
+      "detail": {
+        "title": "Gestante"
+      },
+      "dataDeCadastro": "Data De Cadastro",
+      "nomeCompleto": "Nome Completo",
+      "cpf": "CPF",
+      "rg": "RG",
+      "dataDeNascimento": "Data De Nascimento",
+      "email": "Email",
+      "celular": "Celular",
+      "telefoneFixo": "Telefone Fixo",
+      "whatsapp": "Whatsapp",
+      "instagram": "Instagram",
+      "logradouro": "Logradouro",
+      "numero": "Número",
+      "complemento": "Complemento",
+      "bairro": "Bairro",
+      "cep": "CEP",
+      "cidade": "Cidade",
+      "profissao": "Profissão",
+      "ocupacao": "Ocupação",
+      "nivelDeEscolaridade": "Nível De Escolaridade",
+      "estadoCivil": "Estado Civil",
+      "tipoSanguineo": "Tipo Sangüineo",
+      "unidadeFederativa": "UF",
+      "planoDeSaude": "Plano De Saúde"
+    }
+  }
+}

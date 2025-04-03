@@ -1,0 +1,365 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-gestante-heading" jhiTranslate="gestarmeApp.gestante.home.createLabel" [hidden]="editForm.get('id')!.value">Create or edit a Cad Gestante</h2>
+            <h2 id="jhi-gestante-heading" jhiTranslate="gestarmeApp.gestante.home.editLabel" [hidden]="!editForm.get('id')!.value">Create or edit a Cad Gestante</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label class="form-control-label" jhiTranslate="gestarmeApp.gestante.dataDeCadastro" for="field_dataDeCadastro">Data De Cadastro</label>
+                    <div class="d-flex">
+                        <input id="field_dataDeCadastro" type="datetime-local" class="form-control" name="dataDeCadastro" formControlName="dataDeCadastro" placeholder="YYYY-MM-DD HH:mm"  readonly/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestarmeApp.gestante.nomeCompleto" for="field_nomeCompleto">Nome Completo</label>
+                    <input type="text" class="form-control" name="nomeCompleto" id="field_nomeCompleto"
+                           formControlName="nomeCompleto"/>
+                    <div *ngIf="editForm.get('nomeCompleto')!.invalid && (editForm.get('nomeCompleto')!.dirty || editForm.get('nomeCompleto')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nomeCompleto')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nomeCompleto')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nomeCompleto')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 80 }">
+                        This field cannot be longer than 80 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestarmeApp.gestante.cpf" for="field_cpf">Cpf</label>
+                    <input type="text" class="form-control" name="cpf" id="field_cpf"
+                           formControlName="cpf"/>
+                    <div *ngIf="editForm.get('cpf')!.invalid && (editForm.get('cpf')!.dirty || editForm.get('cpf')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('cpf')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('cpf')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 11 }">
+                        This field is required to be at least 11 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('cpf')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 11 }">
+                        This field cannot be longer than 11 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestarmeApp.gestante.rg" for="field_rg">Rg</label>
+                    <input type="text" class="form-control" name="rg" id="field_rg"
+                           formControlName="rg"/>
+                    <div *ngIf="editForm.get('rg')!.invalid && (editForm.get('rg')!.dirty || editForm.get('rg')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('rg')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('rg')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('rg')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 15 }">
+                        This field cannot be longer than 15 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestarmeApp.gestante.dataDeNascimento" for="field_dataDeNascimento">Data De Nascimento</label>
+                    <div class="d-flex">
+                        <input id="field_dataDeNascimento" type="datetime-local" class="form-control" name="dataDeNascimento" formControlName="dataDeNascimento" placeholder="YYYY-MM-DD HH:mm" />
+                    </div>
+                    <div *ngIf="editForm.get('dataDeNascimento')!.invalid && (editForm.get('dataDeNascimento')!.dirty || editForm.get('dataDeNascimento')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('dataDeNascimento')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('dataDeNascimento')?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestarmeApp.gestante.email" for="field_email">Email</label>
+                    <input type="text" class="form-control" name="email" id="field_email"
+                           formControlName="email"/>
+                    <div *ngIf="editForm.get('email')!.invalid && (editForm.get('email')!.dirty || editForm.get('email')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('email')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('email')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 5 }">
+                        This field is required to be at least 5 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('email')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 40 }">
+                        This field cannot be longer than 40 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('email')?.errors?.pattern" jhiTranslate="entity.validation.pattern" [translateValues]="{ pattern: 'Email' }">
+                            This field should follow pattern for "Email".
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestarmeApp.gestante.celular" for="field_celular">Celular</label>
+                    <input type="text" class="form-control" name="celular" id="field_celular"
+                           formControlName="celular"/>
+                    <div *ngIf="editForm.get('celular')!.invalid && (editForm.get('celular')!.dirty || editForm.get('celular')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('celular')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('celular')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 11 }">
+                        This field is required to be at least 11 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('celular')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 11 }">
+                        This field cannot be longer than 11 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestarmeApp.gestante.telefoneFixo" for="field_telefoneFixo">Telefone Fixo</label>
+                    <input type="text" class="form-control" name="telefoneFixo" id="field_telefoneFixo"
+                           formControlName="telefoneFixo"/>
+                    <div *ngIf="editForm.get('telefoneFixo')!.invalid && (editForm.get('telefoneFixo')!.dirty || editForm.get('telefoneFixo')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('telefoneFixo')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 10 }">
+                        This field is required to be at least 10 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('telefoneFixo')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 10 }">
+                        This field cannot be longer than 10 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestarmeApp.gestante.whatsapp" for="field_whatsapp">Whatsapp</label>
+                    <input type="text" class="form-control" name="whatsapp" id="field_whatsapp"
+                           formControlName="whatsapp"/>
+                    <div *ngIf="editForm.get('whatsapp')!.invalid && (editForm.get('whatsapp')!.dirty || editForm.get('whatsapp')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('whatsapp')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 11 }">
+                        This field is required to be at least 11 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('whatsapp')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 11 }">
+                        This field cannot be longer than 11 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestarmeApp.gestante.instagram" for="field_instagram">Instagram</label>
+                    <input type="text" class="form-control" name="instagram" id="field_instagram"
+                           formControlName="instagram"/>
+                    <div *ngIf="editForm.get('instagram')!.invalid && (editForm.get('instagram')!.dirty || editForm.get('instagram')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('instagram')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('instagram')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 15 }">
+                        This field cannot be longer than 15 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestarmeApp.gestante.logradouro" for="field_logradouro">Logradouro</label>
+                    <input type="text" class="form-control" name="logradouro" id="field_logradouro"
+                           formControlName="logradouro"/>
+                    <div *ngIf="editForm.get('logradouro')!.invalid && (editForm.get('logradouro')!.dirty || editForm.get('logradouro')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('logradouro')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 25 }">
+                        This field cannot be longer than 25 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestarmeApp.gestante.numero" for="field_numero">Numero</label>
+                    <input type="text" class="form-control" name="numero" id="field_numero"
+                           formControlName="numero"/>
+                    <div *ngIf="editForm.get('numero')!.invalid && (editForm.get('numero')!.dirty || editForm.get('numero')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('numero')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 1 }">
+                        This field is required to be at least 1 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('numero')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 10 }">
+                        This field cannot be longer than 10 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestarmeApp.gestante.complemento" for="field_complemento">Complemento</label>
+                    <input type="text" class="form-control" name="complemento" id="field_complemento"
+                           formControlName="complemento"/>
+                    <div *ngIf="editForm.get('complemento')!.invalid && (editForm.get('complemento')!.dirty || editForm.get('complemento')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('complemento')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('complemento')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 25 }">
+                        This field cannot be longer than 25 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestarmeApp.gestante.bairro" for="field_bairro">Bairro</label>
+                    <input type="text" class="form-control" name="bairro" id="field_bairro"
+                           formControlName="bairro"/>
+                    <div *ngIf="editForm.get('bairro')!.invalid && (editForm.get('bairro')!.dirty || editForm.get('bairro')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('bairro')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('bairro')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 50 }">
+                        This field cannot be longer than 50 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestarmeApp.gestante.cep" for="field_cep">Cep</label>
+                    <input type="text" class="form-control" name="cep" id="field_cep"
+                           formControlName="cep"/>
+                    <div *ngIf="editForm.get('cep')!.invalid && (editForm.get('cep')!.dirty || editForm.get('cep')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('cep')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('cep')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 8 }">
+                        This field is required to be at least 8 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('cep')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 8 }">
+                        This field cannot be longer than 8 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestarmeApp.gestante.cidade" for="field_cidade">Cidade</label>
+                    <input type="text" class="form-control" name="cidade" id="field_cidade"
+                           formControlName="cidade"/>
+                    <div *ngIf="editForm.get('cidade')!.invalid && (editForm.get('cidade')!.dirty || editForm.get('cidade')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('cidade')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('cidade')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('cidade')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 50 }">
+                        This field cannot be longer than 50 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestarmeApp.gestante.profissao" for="field_profissao">Profissao</label>
+                    <select class="form-control" id="field_profissao" name="profissao" formControlName="profissao">
+                        <option *ngIf="!editForm.get('profissao')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="profissaoOption.id === editForm.get('profissao')!.value?.id ? editForm.get('profissao')!.value : profissaoOption" *ngFor="let profissaoOption of profissaos; trackBy: trackById">{{ profissaoOption.nome }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('profissao')!.invalid && (editForm.get('profissao')!.dirty || editForm.get('profissao')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('profissao')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestarmeApp.gestante.ocupacao" for="field_ocupacao">Ocupacao</label>
+                    <select class="form-control" id="field_ocupacao" name="ocupacao" formControlName="ocupacao">
+                        <option *ngIf="!editForm.get('ocupacao')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="ocupacaoOption.id === editForm.get('ocupacao')!.value?.id ? editForm.get('ocupacao')!.value : ocupacaoOption" *ngFor="let ocupacaoOption of ocupacaos; trackBy: trackById">{{ ocupacaoOption.nome }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('ocupacao')!.invalid && (editForm.get('ocupacao')!.dirty || editForm.get('ocupacao')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('ocupacao')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestarmeApp.gestante.nivelDeEscolaridade" for="field_nivelDeEscolaridade">Nivel De Escolaridade</label>
+                    <select class="form-control" id="field_nivelDeEscolaridade" name="nivelDeEscolaridade" formControlName="nivelDeEscolaridade">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="nivelDeEscolaridadeOption.id === editForm.get('nivelDeEscolaridade')!.value?.id ? editForm.get('nivelDeEscolaridade')!.value : nivelDeEscolaridadeOption" *ngFor="let nivelDeEscolaridadeOption of niveldeescolaridades; trackBy: trackById">{{ nivelDeEscolaridadeOption.nome }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestarmeApp.gestante.estadoCivil" for="field_estadoCivil">Estado Civil</label>
+                    <select class="form-control" id="field_estadoCivil" name="estadoCivil" formControlName="estadoCivil">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="estadoCivilOption.id === editForm.get('estadoCivil')!.value?.id ? editForm.get('estadoCivil')!.value : estadoCivilOption" *ngFor="let estadoCivilOption of estadocivils; trackBy: trackById">{{ estadoCivilOption.nome }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestarmeApp.gestante.tipoSanguineo" for="field_tipoSanguineo">Tipo Sanguineo</label>
+                    <select class="form-control" id="field_tipoSanguineo" name="tipoSanguineo" formControlName="tipoSanguineo">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="tipoSanguineoOption.id === editForm.get('tipoSanguineo')!.value?.id ? editForm.get('tipoSanguineo')!.value : tipoSanguineoOption" *ngFor="let tipoSanguineoOption of tiposanguineos; trackBy: trackById">{{ tipoSanguineoOption.nome }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestarmeApp.gestante.uF" for="field_uF">U F</label>
+                    <select class="form-control" id="field_uF" name="uF" formControlName="uF">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="uFOption.id === editForm.get('uF')!.value?.id ? editForm.get('uF')!.value : uFOption" *ngFor="let uFOption of ufs; trackBy: trackById">{{ uFOption.nome }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestarmeApp.gestante.planoDeSaude" for="field_planoDeSaude">Plano De Saude</label>
+                    <select class="form-control" id="field_planoDeSaude" name="planoDeSaude" formControlName="planoDeSaude">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="planoDeSaudeOption.id === editForm.get('planoDeSaude')!.value?.id ? editForm.get('planoDeSaude')!.value : planoDeSaudeOption" *ngFor="let planoDeSaudeOption of planodesaudes; trackBy: trackById">{{ planoDeSaudeOption.nome }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

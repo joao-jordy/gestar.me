@@ -1,0 +1,31 @@
+Registros (Usuário e Gestor)
+    Gestante
+        Avaliacao Da Gestacao
+        Gestacao
+            Bebe
+    Registro De Parto
+
+Configuração (Perfis: Gestor e Admin)
+    Hospital
+    Doula
+    Medico
+    Antecedente De Saude
+    Intercorrencia Da Gestacao
+    Intercorrencia Do Parto
+    Plano De Saude
+    Profissao
+    Especialidade Medica
+    Ocupacao
+    Aspecto Do Recem Nascido
+    Indicacao De Cesarea
+    Via De Parto
+    Posicao De Parto
+
+Dados Fixos
+    Grau De Parentesco
+    Nivel De Escolaridade
+    Estado Civil
+    Local De Nascimento
+    Tipo Sanguineo
+    Sexo
+    UF

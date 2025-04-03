@@ -1,0 +1,145 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="gestante">
+            <h2><span jhiTranslate="gestarmeApp.gestante.detail.title">Gestante</span> {{ gestante.nomeCompleto }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+
+<!--            <div class="card border-primary mb-3" style="max-width: 20rem;" *ngSwitchCase="true">
+              <div class="card-header"><span jhiTranslate="home.cadastros">Cadastros:</span></div>
+              <div class="card-body">
+
+                <button type="button" class="btn btn-primary btn-lg" [routerLink]="['/cad-gestante']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    <span jhiTranslate="global.menu.entities.cadGestante">Gestantes</span>
+                </button>
+
+               </div>
+            </div>
+-->
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestarmeApp.gestante.dataDeCadastro">Data De Cadastro</span></dt>
+                <dd>
+                    <span>{{ gestante.dataDeCadastro | date:'short' }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestarmeApp.gestante.nomeCompleto">Nome Completo</span></dt>
+<!--                <dd>
+                    <span>{{ gestante.nomeCompleto }}</span>
+                </dd>-->
+                <dt><span jhiTranslate="gestarmeApp.gestante.cpf">Cpf</span></dt>
+                <dd>
+                    <span>{{ gestante.cpf }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestarmeApp.gestante.rg">Rg</span></dt>
+                <dd>
+                    <span>{{ gestante.rg }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestarmeApp.gestante.dataDeNascimento">Data De Nascimento</span></dt>
+                <dd>
+                    <span>{{ gestante.dataDeNascimento | date:'dd/MM/yyyy' }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestarmeApp.gestante.email">Email</span></dt>
+                <dd>
+                    <span>{{ gestante.email }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestarmeApp.gestante.celular">Celular</span></dt>
+                <dd>
+                    <span>{{ gestante.celular }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestarmeApp.gestante.telefoneFixo">Telefone Fixo</span></dt>
+                <dd>
+                    <span>{{ gestante.telefoneFixo }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestarmeApp.gestante.whatsapp">Whatsapp</span></dt>
+                <dd>
+                    <span>{{ gestante.whatsapp }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestarmeApp.gestante.instagram">Instagram</span></dt>
+                <dd>
+                    <span>{{ gestante.instagram }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestarmeApp.gestante.logradouro">Logradouro</span></dt>
+                <dd>
+                    <span>{{ gestante.logradouro }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestarmeApp.gestante.numero">Numero</span></dt>
+                <dd>
+                    <span>{{ gestante.numero }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestarmeApp.gestante.complemento">Complemento</span></dt>
+                <dd>
+                    <span>{{ gestante.complemento }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestarmeApp.gestante.bairro">Bairro</span></dt>
+                <dd>
+                    <span>{{ gestante.bairro }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestarmeApp.gestante.cep">Cep</span></dt>
+                <dd>
+                    <span>{{ gestante.cep }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestarmeApp.gestante.cidade">Cidade</span></dt>
+                <dd>
+                    <span>{{ gestante.cidade }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestarmeApp.gestante.profissao">Profissao</span></dt>
+                <dd>
+                    <div *ngIf="gestante.profissao">
+                        <a [routerLink]="['/profissao', gestante.profissao?.id, 'view']">{{ gestante.profissao?.nome }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestarmeApp.gestante.ocupacao">Ocupacao</span></dt>
+                <dd>
+                    <div *ngIf="gestante.ocupacao">
+                        <a [routerLink]="['/ocupacao', gestante.ocupacao?.id, 'view']">{{ gestante.ocupacao?.nome }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestarmeApp.gestante.nivelDeEscolaridade">Nivel De Escolaridade</span></dt>
+                <dd>
+                    <div *ngIf="gestante.nivelDeEscolaridade">
+                        <a [routerLink]="['/nivel-de-escolaridade', gestante.nivelDeEscolaridade?.id, 'view']">{{ gestante.nivelDeEscolaridade?.nome }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestarmeApp.gestante.estadoCivil">Estado Civil</span></dt>
+                <dd>
+                    <div *ngIf="gestante.estadoCivil">
+                        <a [routerLink]="['/estado-civil', gestante.estadoCivil?.id, 'view']">{{ gestante.estadoCivil?.nome }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestarmeApp.gestante.tipoSanguineo">Tipo Sanguineo</span></dt>
+                <dd>
+                    <div *ngIf="gestante.tipoSanguineo">
+                        <a [routerLink]="['/tipo-sanguineo', gestante.tipoSanguineo?.id, 'view']">{{ gestante.tipoSanguineo?.nome }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestarmeApp.gestante.uF">U F</span></dt>
+                <dd>
+                    <div *ngIf="gestante.uF">
+                        <a [routerLink]="['/uf', gestante.uF?.id, 'view']">{{ gestante.uF?.nome }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestarmeApp.gestante.planoDeSaude">Plano De Saude</span></dt>
+                <dd>
+                    <div *ngIf="gestante.planoDeSaude">
+                        <a [routerLink]="['/plano-de-saude', gestante.planoDeSaude?.id, 'view']">{{ gestante.planoDeSaude?.nome }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/gestante', gestante.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

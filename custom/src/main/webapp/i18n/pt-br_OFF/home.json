@@ -1,0 +1,15 @@
+{
+  "home": {
+    "title": "",
+    "subtitle": "Sua gestação em boas mãos.",
+    "cadastros": "Cadastros",
+    "logged": {
+      "message": "Você está logado como \"{{username}}\"."
+    },
+    "question": "Em caso de dúvidas entre em contato:",
+    "link": {
+      "faq": "FAQ com perguntas frequentes",
+      "email": "Email do Gestar.me"
+    }
+  }
+}

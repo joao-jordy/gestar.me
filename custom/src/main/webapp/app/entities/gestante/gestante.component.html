@@ -1,0 +1,139 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="gestarmeApp.gestante.home.title">Gestantes</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-gestante" [routerLink]="['/gestante/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="gestarmeApp.gestante.home.createLabel">
+            Create a new Gestante
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="gestantes?.length === 0">
+        <span jhiTranslate="gestarmeApp.gestante.home.notFound">No gestantes found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="gestantes && gestantes.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+<!--                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th> -->
+<!--                    <th scope="col"  jhiSortBy="dataDeCadastro"><span jhiTranslate="gestarmeApp.gestante.dataDeCadastro">Data De Cadastro</span> <fa-icon icon="sort"></fa-icon></th>-->
+                    <th scope="col"  jhiSortBy="nomeCompleto"><span jhiTranslate="gestarmeApp.gestante.nomeCompleto">Nome Completo</span> <fa-icon icon="sort"></fa-icon></th>
+<!--                    <th scope="col"  jhiSortBy="cpf"><span jhiTranslate="gestarmeApp.gestante.cpf">Cpf</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="rg"><span jhiTranslate="gestarmeApp.gestante.rg">Rg</span> <fa-icon icon="sort"></fa-icon></th>-->
+                    <th scope="col"  jhiSortBy="dataDeNascimento"><span jhiTranslate="gestarmeApp.gestante.dataDeNascimento">Data De Nascimento</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="email"><span jhiTranslate="gestarmeApp.gestante.email">Email</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="celular"><span jhiTranslate="gestarmeApp.gestante.celular">Celular</span> <fa-icon icon="sort"></fa-icon></th>
+<!--                    <th scope="col"  jhiSortBy="telefoneFixo"><span jhiTranslate="gestarmeApp.gestante.telefoneFixo">Telefone Fixo</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="logradouro"><span jhiTranslate="gestarmeApp.gestante.logradouro">Logradouro</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="numero"><span jhiTranslate="gestarmeApp.gestante.numero">Numero</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="complemento"><span jhiTranslate="gestarmeApp.gestante.complemento">Complemento</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="bairro"><span jhiTranslate="gestarmeApp.gestante.bairro">Bairro</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="cep"><span jhiTranslate="gestarmeApp.gestante.cep">Cep</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="cidade"><span jhiTranslate="gestarmeApp.gestante.cidade">Cidade</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="profissao.nome"><span jhiTranslate="gestarmeApp.gestante.profissao">Profissao</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="ocupacao.nome"><span jhiTranslate="gestarmeApp.gestante.ocupacao">Ocupacao</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="nivelDeEscolaridade.nome"><span jhiTranslate="gestarmeApp.gestante.nivelDeEscolaridade">Nivel De Escolaridade</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="planoDeSaude.nome"><span jhiTranslate="gestarmeApp.gestante.planoDeSaude">Plano De Saude</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="tipoSanguineo.nome"><span jhiTranslate="gestarmeApp.gestante.tipoSanguineo">Tipo Sanguineo</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="estadoCivil.nome"><span jhiTranslate="gestarmeApp.gestante.estadoCivil">Estado Civil</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="unidadeFederativa.nome"><span jhiTranslate="gestarmeApp.gestante.unidadeFederativa">Unidade Federativa</span> <fa-icon icon="sort"></fa-icon></th> -->
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let gestante of gestantes ;trackBy: trackId">
+<!--                    <td><a [routerLink]="['/gestante', gestante.id, 'view']">{{ gestante.id }}</a></td>-->
+<!--                    <td>{{ gestante.dataDeCadastro | date:'medium' }}</td>-->
+                    <td><a [routerLink]="['/gestante', gestante.id, 'view']">{{ gestante.nomeCompleto }}</a></td>
+<!--                    <td>{{ gestante.cpf }}</td>
+                    <td>{{ gestante.rg }}</td>-->
+                    <td>{{ gestante.dataDeNascimento | date:'short' }}</td>
+                    <td>{{ gestante.email }}</td>
+                    <td>{{ gestante.celular }}</td>
+<!--                    <td>{{ gestante.telefoneFixo }}</td>
+                    <td>{{ gestante.logradouro }}</td>
+                    <td>{{ gestante.numero }}</td>
+                    <td>{{ gestante.complemento }}</td>
+                    <td>{{ gestante.bairro }}</td>
+                    <td>{{ gestante.cep }}</td>
+                    <td>{{ gestante.cidade }}</td>
+                    <td>
+                        <div *ngIf="gestante.profissao">
+                            <a [routerLink]="['/profissao', gestante.profissao?.id, 'view']" >{{ gestante.profissao?.nome }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="gestante.ocupacao">
+                            <a [routerLink]="['/ocupacao', gestante.ocupacao?.id, 'view']" >{{ gestante.ocupacao?.nome }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="gestante.nivelDeEscolaridade">
+                            <a [routerLink]="['/nivel-de-escolaridade', gestante.nivelDeEscolaridade?.id, 'view']" >{{ gestante.nivelDeEscolaridade?.nome }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="gestante.planoDeSaude">
+                            <a [routerLink]="['/plano-de-saude', gestante.planoDeSaude?.id, 'view']" >{{ gestante.planoDeSaude?.nome }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="gestante.tipoSanguineo">
+                            <a [routerLink]="['/tipo-sanguineo', gestante.tipoSanguineo?.id, 'view']" >{{ gestante.tipoSanguineo?.nome }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="gestante.estadoCivil">
+                            <a [routerLink]="['/estado-civil', gestante.estadoCivil?.id, 'view']" >{{ gestante.estadoCivil?.nome }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="gestante.unidadeFederativa">
+                            <a [routerLink]="['/unidade-federativa', gestante.unidadeFederativa?.id, 'view']" >{{ gestante.unidadeFederativa?.nome }}</a>
+                        </div>
+                    </td>-->
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/gestante', gestante.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/gestante', gestante.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(gestante)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="gestantes && gestantes.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

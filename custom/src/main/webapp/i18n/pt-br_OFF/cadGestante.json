@@ -1,0 +1,54 @@
+{
+  "gestarmeApp": {
+    "cadGestante": {
+      "home": {
+        "title": "Gestantes",
+        "createLabel": "Cadastrar nova Gestante",
+        "create": "Cadastrar Gestante",
+        "edit": "Editar Gestante",
+        "search": "Pesquisar por Gestante",
+        "notFound": "Nenhum Cadastro de Gestante encontrado"
+      },
+      "created": "Um novo Cadastro Gestante foi criado com o identificador {{ param }}",
+      "updated": "Um Cadastro de Gestante foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Cadastro de Gestante foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir o Cadastro de Gestante {{ id }}?"
+      },
+      "detail": {
+        "title": "Cadastro de Gestante",
+        "group": {
+            "dados-pessoais": "Dados Pessoais",
+            "dados-de-contato": "Dados de Contato",
+            "endereco": "Endereço",
+            "outras-informacoes": "Outras Informações"
+          }
+      },
+      "gestanteDataDeCadastro": "Data De Cadastro",
+      "gestanteNomeCompleto": "Nome Completo",
+      "gestanteCpf": "Cpf",
+      "gestanteRg": "Rg",
+      "gestanteDataDeNascimento": "Data De Nascimento",
+      "gestanteEstadoCivil": "Estado Civil",
+      "gestanteEscolaridade": "Escolaridade",
+      "gestanteTipoSanguineo": "Tipo Sanguineo",
+      "contatoEmail": "Email",
+      "contatoCelular": "Celular",
+      "contatoTelefoneFixo": "Telefone Fixo",
+      "contatoWhatsapp": "Whatsapp",
+      "contatoInstagram": "Instagram",
+      "enderecoNome": "Nome do Endereco",
+      "enderecoLogradouro": "Logradouro",
+      "enderecoNumero": "Número",
+      "enderecoComplemento": "Complemento",
+      "enderecoBairro": "Bairro",
+      "enderecoCep": "Cep",
+      "enderecoCidade": "Cidade",
+      "enderecoUf": "UF",
+      "ocupacao": "Ocupação",
+      "profissao": "Profissão",
+      "planoDeSaude": "Plano De Saúde",
+      "antecedenteDeSaude": "Antecedente De Saúde"
+    }
+  }
+}
