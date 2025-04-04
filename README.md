@@ -1,3 +1,3 @@
 ## Gestar.me
 
-Build using https://www.jhipster.tech/getting-started
+Built using https://www.jhipster.tech/getting-started
