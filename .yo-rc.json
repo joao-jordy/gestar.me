@@ -1,0 +1,42 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "io.entrerios.gestarme"
+    },
+    "jhipsterVersion": "6.9.1",
+    "applicationType": "monolith",
+    "baseName": "gestarme",
+    "packageName": "io.entrerios.gestarme",
+    "packageFolder": "io/entrerios/gestarme",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Memory",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "Y2E3YmUxZTdlZjc0NmNiNzJiOWIxYmU2ZDgwNzdjYmJkMWY2MGExNjY1MDgxMTYyNWU0YmIxNzg3MmMxNDQ5OGY0NWJkZTM3MDU2YTA0MDNjM2M2ZGM2NTA5NDRkODFjOTE3MmMwYjZiOTY4ZjMxYzI5YmQyMzBmYTIxNjY5NjA=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "pulse",
+    "clientThemeVariant": "dark",
+    "creationTimestamp": 1596547734144,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "pt-br",
+    "languages": ["pt-br", "en", "es"],
+    "blueprints": []
+  }
+}
